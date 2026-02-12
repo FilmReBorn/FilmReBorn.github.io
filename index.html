@@ -3,29 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FilmReBorn - Expert Post-Producție Film</title>
+    <title>FilmReBorn - Portofoliu Post-Producție Film</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #0a0a0a; color: white; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { color: #00bcd4; text-align: center; }
-        .service { background: #1a1a1a; padding: 15px; margin: 10px 0; border-left: 4px solid #00bcd4; }
-        .highlight { color: #00bcd4; font-weight: bold; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 3px solid #00adb5;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #00adb5;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(0, 173, 181, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #eeeeee;
+            margin-bottom: 2rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: #00adb5;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #00adb5;
+        }
+
+        .contact-btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #00adb5;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: #00adb5;
+            margin: 10px auto;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #00adb5;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #00adb5;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+        }
+
+        .project-img {
+            height: 200px;
+            background: linear-gradient(45deg, #00adb5, #393e46);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(0, 173, 181, 0.2);
+            color: #00adb5;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: #00adb5;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .section-title { font-size: 1.8rem; }
+            section { padding: 2rem 0; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎬 FilmReBorn</h1>
-        <h2>Expert Post-Producție Video: FFMpeg & DaVinci Resolve</h2>
-        <div class="service">
-            <h3>🔄 Conversie formate video</h3>
-            <p><span class="highlight">Orice format în orice format:</span> MP4, MOV, AVI, MKV, etc.</p>
-            <p><span class="highlight">Batch processing:</span> 100+ clipuri odată (automatizat)</p>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1 class="logo">FilmReBorn</h1>
+            <p class="tagline">Transformăm orice filmare în capodoperă</p>
+            <p class="tagline">Post-producție magică cu FFMpeg & DaVinci Resolve</p>
+            <a href="#contact" class="contact-btn">Contactează-mă</a>
         </div>
-        <div class="service">
-            <h3>🔧 Reparare filmări deteriorate</h3>
-            <p><span class="highlight">Clipuri tremurate:</span> Stabilizare perfectă</p>
-            <p><span class="highlight">Corecție culori automate:</span> Recuperare culoare originală</p>
+    </header>
+
+    <!-- DESPRE MINE -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Despre serviciile mele</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Transformare formate video</h3>
+                    <p>Conversie orice format (MP4, MOV, AVI, etc.) cu calitate maximă folosind FFMpeg expert.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-medkit"></i>
+                    </div>
+                    <h3>Reparare filmări deteriorate</h3>
+                    <p>Recuperare videoclipuri cu artefacte, probleme de audio, cadre corupte.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color grading avansat</h3>
+                    <p>Corecție culoare, LUT-uri personalizate, stil cinematic în DaVinci Resolve.</p>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- PROIECTE -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Proiecte & Expertiză</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Scripturi FFMpeg automate</h3>
+                        <p>Batch processing pentru conversii video la scară mare.</p>
+                        <div class="tech-tag">FFMpeg</div>
+                        <div class="tech-tag">Bash Scripting</div>
+                        <div class="tech-tag">Automation</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Editare video comercială</h3>
+                        <p>Proiecte complete de editare pentru promoții și reclame.</p>
+                        <div class="tech-tag">DaVinci Resolve</div>
+                        <div class="tech-tag">Editing</div>
+                        <div class="tech-tag">Motion Graphics</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Tool-uri personalizate</h3>
+                        <p>Unelte pentru workflow optimizat în post-producție.</p>
+                        <div class="tech-tag">Python</div>
+                        <div class="tech-tag">FFMpeg API</div>
+                        <div class="tech-tag">Productivity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Link-uri</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Disponibil pentru proiecte de post-producție video, consultanță și automatizări.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/FilmReBorn" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://youtube.com/@luceafaruluipetter" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:contact@example.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <p style="margin-top: 2rem; color: #00adb5;">
+                    <i class="fas fa-link"></i> Portofoliu live: 
+                    <strong>FilmReBorn.github.io</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2024 <span style="color: #00adb5;">FilmReBorn</span> - Portofoliu Post-Producție Film</p>
+            <p>FFMpeg Expert | DaVinci Resolve Specialist | Video Automation</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animatie simpla pentru scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- 🔥 De aici jos chat si lasa mesaj -->
         <div class="service">
             <h3>🎨 Optimizare pentru social media</h3>
             <p>Formatare specifică pentru YouTube, Instagram, TikTok</p>
