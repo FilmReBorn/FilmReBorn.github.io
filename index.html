@@ -3,565 +3,1520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FilmReBorn - Portofoliu Post-Producție Film</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="FilmReBorn - Servicii profesionale de post-producție video, editare, conversie și AI Assistant. Contact direct, consultanță gratuită.">
+    <meta name="keywords" content="editare video, post-productie, conversie video, color grading, AI video, FilmReBorn">
+    <title>FilmReBorn - Post-Producție Video Profesională & AI Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #00d4aa;
+            --primary-dark: #00a888;
+            --accent: #ff4757;
+            --accent-glow: rgba(255, 71, 87, 0.4);
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a25;
+            --text: #ffffff;
+            --text-muted: #8b8b9a;
+            --border: #2a2a3a;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* HEADER */
-        header {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 0;
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(0, 212, 170, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 71, 87, 0.06) 0%, transparent 50%),
+                var(--bg-dark);
+            padding: 80px 0;
+        }
+
+        .hero-content {
             text-align: center;
-            border-bottom: 3px solid #00adb5;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-wrapper {
+            margin-bottom: 32px;
         }
 
         .logo {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #00adb5;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(0, 173, 181, 0.5);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, #00ffcc 50%, var(--primary) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+            letter-spacing: -2px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .logo-icon {
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .tagline {
-            font-size: 1.3rem;
-            color: #eeeeee;
-            margin-bottom: 2rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 400;
         }
 
-        .contact-btn {
-            display: inline-block;
-            background: #00adb5;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+        .tagline-highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.15), rgba(255, 71, 87, 0.05));
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            color: var(--accent);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 24px 0 40px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255, 71, 87, 0.2); }
+            to { box-shadow: 0 0 40px rgba(255, 71, 87, 0.4); }
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 2px solid #00adb5;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
         }
 
-        .contact-btn:hover {
-            background: transparent;
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
         }
 
-        /* SECTIONS */
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #ff6b7a);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .phone-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            padding: 16px 28px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .phone-display:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.15);
+        }
+
         section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            color: #00adb5;
+            padding: 100px 0;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: #00adb5;
-            margin: 10px auto;
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
         }
 
-        /* SERVICES */
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 5px solid #00adb5;
-            transition: transform 0.3s;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            background: var(--bg-card-hover);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card.ai-card::before {
+            background: linear-gradient(90deg, var(--accent), #ff6b7a);
+        }
+
+        .service-card.ai-card:hover {
+            border-color: var(--accent);
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            color: #00adb5;
-            margin-bottom: 1rem;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 16px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-card .service-icon {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--accent);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
-        /* PROJECTS */
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 28px;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card:hover {
-            transform: scale(1.03);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .project-img {
             height: 200px;
-            background: linear-gradient(45deg, #00adb5, #393e46);
+            background: linear-gradient(135deg, var(--bg-card-hover), var(--bg-dark));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), transparent);
+        }
+
+        .project-card.ai-project .project-img {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.2), var(--bg-dark));
+            color: var(--accent);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 28px;
         }
 
-        .tech-tag {
-            display: inline-block;
-            background: rgba(0, 173, 181, 0.2);
-            color: #00adb5;
-            padding: 5px 10px;
+        .project-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.8rem;
-            margin: 5px;
+            font-weight: 500;
         }
 
-        /* FOOTER */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 3rem 0;
+        .tag.ai-tag {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--accent);
+        }
+
+        .ai-section {
+            background: 
+                radial-gradient(ellipse at 50% 0%, rgba(255, 71, 87, 0.08) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+
+        .ai-chat-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, var(--bg-card), rgba(18, 18, 26, 0.8));
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 100px rgba(255, 71, 87, 0.05);
+        }
+
+        .ai-chat-header {
             text-align: center;
-            margin-top: 4rem;
+            margin-bottom: 32px;
+        }
+
+        .ai-chat-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent), #ff8a94);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .ai-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .ai-feature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 71, 87, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        #chatMessages {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        #chatMessages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chatMessages::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        #chatMessages::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            padding: 16px 20px;
+            border-radius: 20px;
+            max-width: 85%;
+            animation: messageIn 0.3s ease-out;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.bot {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
+            border: 1px solid var(--border);
+            margin-right: auto;
+            border-bottom-left-radius: 8px;
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-dark);
+            margin-left: auto;
+            border-bottom-right-radius: 8px;
+        }
+
+        .message .sender {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .message.user .sender {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 12px;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 18px 24px;
+            background: var(--bg-dark);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #userInput:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 212, 170, 0.15);
+        }
+
+        #userInput::placeholder {
+            color: var(--text-muted);
+        }
+
+        #sendBtn {
+            padding: 18px 32px;
+            background: linear-gradient(135deg, var(--accent), #ff6b7a);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        #sendBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        #sendBtn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 12px 20px;
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .typing-indicator.show {
+            display: block;
+        }
+
+        .live-chat-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .live-chat-wrapper iframe {
+            border-radius: 16px;
+        }
+
+        .music-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+        }
+
+        .music-wrapper h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .music-wrapper iframe {
+            border-radius: 16px;
+        }
+
+        .contact-section {
+            background: 
+                radial-gradient(ellipse at 30% 100%, rgba(0, 212, 170, 0.06) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            padding: 20px 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+            transform: translateX(8px);
+        }
+
+        .contact-link i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 40px;
+        }
+
+        .contact-link span {
+            font-weight: 500;
         }
 
         .social-links {
-            margin: 1.5rem 0;
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
         }
 
-        .social-links a {
-            color: #00adb5;
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+        }
+
+        .contact-form-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s;
+            margin-bottom: 24px;
+            text-align: center;
         }
 
-        .social-links a:hover {
-            color: white;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        /* RESPONSIVE */
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--bg-dark);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            border: none;
+            border-radius: 12px;
+            color: var(--bg-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 16px;
+        }
+
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
         @media (max-width: 768px) {
-            .logo { font-size: 2.5rem; }
-            .section-title { font-size: 1.8rem; }
-            section { padding: 2rem 0; }
+            section {
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-input-area {
+                flex-direction: column;
+            }
+
+            #sendBtn {
+                width: 100%;
+            }
+
+            #chatMessages {
+                height: 300px;
+            }
+
+            .ai-chat-wrapper {
+                padding: 24px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .contact-form-wrapper {
+                padding: 24px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="container">
-            <h1 class="logo">FilmReBorn</h1>
-            <p class="tagline">Transformăm orice filmare în capodoperă</p>
-            <p class="tagline">Post-producție magică </p>
-            <p class="tagline"> +40769497534 </p
-            <a href="#contact" class="contact-btn">Contact direct Telefon </a>
-        </div>
-    </header>
 
-    <!-- DESPRE MINE -->
-    <section id="about">
+    <section class="hero" id="home">
         <div class="container">
-            <h2 class="section-title">Despre serviciile mele</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Transformare formate video</h3>
-                    <p>Conversie orice format (MP4, MOV, AVI, etc.) cu calitate maximă  expert.</p>
+            <div class="hero-content">
+                <div class="logo-wrapper">
+                    <h1 class="logo"><span class="logo-icon"><i class="fas fa-film"></i></span>FilmReBorn</h1>
                 </div>
+                <p class="tagline">Transformăm orice filmare în <span class="tagline-highlight">capodoperă</span></p>
+                <p class="tagline">Post-producție profesională | Editare video | Soluții AI</p>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-medkit"></i>
-                    </div>
-                    <h3>Reparare filmări deteriorate</h3>
-                    <p>Recuperare videoclipuri cu artefacte, probleme de audio, cadre corupte.</p>
+                <div class="ai-badge">
+                    <i class="fas fa-robot"></i>
+                    <span>AI ASSISTANT INTEGRAT - 100% GRATUIT</span>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Color grading avansat</h3>
-                    <p>Corecție culoare, LUT-uri personalizate, stil cinematic .</p>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contactează-mă
+                    </a>
+                    <a href="#ai-assistant" class="btn btn-accent">
+                        <i class="fas fa-robot"></i>
+                        Încearcă AI Assistant
+                    </a>
+                    <a href="#services" class="btn btn-outline">
+                        <i class="fas fa-arrow-down"></i>
+                        Vezi serviciile
+                    </a>
+                </div>
+
+                <div class="phone-display">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+40 769 497 534</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROIECTE -->
-    <section id="projects">
+    <section id="services">
         <div class="container">
-            <h2 class="section-title">Proiecte & Expertiză</h2>
+            <div class="section-header fade-in">
+                <div class="section-badge">
+                    <i class="fas fa-cog"></i>
+                    Servicii
+                </div>
+                <h2 class="section-title">Ce pot face pentru tine</h2>
+                <p class="section-subtitle">Servicii profesionale de post-producție video și soluții AI personalizate</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Conversie Formate Video</h3>
+                    <p>Conversie profesională între orice formate (MP4, MOV, AVI, MKV, WebM) cu păstrarea calității maxime.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Reparare Video Deteriorat</h3>
+                    <p>Recuperare videoclipuri cu probleme: artefacte vizuale, audio desincronizat, fișiere corupte.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color Grading Profesional</h3>
+                    <p>Corecție culoare avansată, LUT-uri personalizate, stil cinematic pentru orice tip de video.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Optimizare Social Media</h3>
+                    <p>Formatare perfectă pentru YouTube, Instagram, TikTok. Compresie inteligentă fără pierdere de calitate.</p>
+                </div>
+
+                <div class="service-card ai-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Assistant Video</h3>
+                    <p>Asistent inteligent disponibil 24/7 pentru sfaturi de editare, recomandări tehnice și ghidare profesională.</p>
+                </div>
+
+                <div class="service-card ai-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Automatizări AI & Scripturi</h3>
+                    <p>Scripturi personalizate pentru procesare în masă, conversii automate și workflow optimizat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--bg-card);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge">
+                    <i class="fas fa-briefcase"></i>
+                    Expertiză
+                </div>
+                <h2 class="section-title">Proiecte & Specializări</h2>
+                <p class="section-subtitle">Experiență dovedită în diverse tipuri de proiecte video</p>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">
                         <i class="fas fa-terminal"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Scripturi automate</h3>
-                        <p>Batch processing pentru conversii video la scară mare.</p>
-                        <div class="tech-tag"></div>
-                        <div class="tech-tag">Bash Scripting</div>
-                        <div class="tech-tag">Automation</div>
+                        <h3>Scripturi & Automatizări</h3>
+                        <p>Procesare automată pentru conversii video la scară mare. Soluții eficiente pentru volume mari de fișiere.</p>
+                        <div class="tags">
+                            <span class="tag">FFmpeg</span>
+                            <span class="tag">Bash</span>
+                            <span class="tag">Automation</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="project-card">
+
+                <div class="project-card fade-in">
                     <div class="project-img">
                         <i class="fas fa-film"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Editare video comercială</h3>
-                        <p>Proiecte complete de editare pentru promoții și reclame.</p>
-                        <div class="tech-tag">Converire </div>
-                        <div class="tech-tag">Editing</div>
-                        <div class="tech-tag">Motion Graphics</div>
+                        <h3>Editare Video Comercială</h3>
+                        <p>Proiecte complete de editare pentru reclame, promoții, videoclipuri corporate și conținut social media.</p>
+                        <div class="tags">
+                            <span class="tag">Editing</span>
+                            <span class="tag">Motion Graphics</span>
+                            <span class="tag">Conversie</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="project-card">
+
+                <div class="project-card ai-project fade-in">
                     <div class="project-img">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-microchip"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Tool-uri personalizate</h3>
-                        <p>Unelte pentru workflow optimizat în post-producție.</p>
-                        <div class="tech-tag">Python</div>
-                        <div class="tech-tag">API</div>
-                        <div class="tech-tag">Productivity</div>
+                        <h3>Tool-uri AI Personalizate</h3>
+                        <p>Dezvoltare de unelte AI pentru workflow optimizat în producția video. Soluții inteligente la cerere.</p>
+                        <div class="tags">
+                            <span class="tag ai-tag">AI</span>
+                            <span class="tag ai-tag">Python</span>
+                            <span class="tag ai-tag">Automation</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
+    <section id="ai-assistant" class="ai-section">
         <div class="container">
-            <h2 class="section-title">Contact & Link-uri</h2>
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    Disponibil pentru proiecte de post-producție video, consultanță și automatizări.
+            <div class="section-header fade-in">
+                <div class="section-badge" style="background: rgba(255, 71, 87, 0.1); border-color: rgba(255, 71, 87, 0.2); color: var(--accent);">
+                    <i class="fas fa-robot"></i>
+                    AI Assistant
+                </div>
+                <h2 class="section-title">Asistent AI Gratuit</h2>
+                <p class="section-subtitle">Întreabă orice despre editare video - răspunsuri instant, 24/7</p>
+            </div>
+
+            <div class="ai-chat-wrapper fade-in">
+                <div class="ai-chat-header">
+                    <h2><i class="fas fa-robot"></i> FilmReBorn AI</h2>
+                    <p style="color: var(--text-muted);">Asistentul tău personal pentru producție video</p>
+                    <div class="ai-features">
+                        <div class="ai-feature"><i class="fas fa-bolt"></i> Răspuns instant</div>
+                        <div class="ai-feature"><i class="fas fa-gift"></i> 100% Gratuit</div>
+                        <div class="ai-feature"><i class="fas fa-user-slash"></i> Fără cont</div>
+                    </div>
+                </div>
+
+                <div id="chatMessages">
+                    <div class="message bot">
+                        <div class="sender"><i class="fas fa-robot"></i> FilmReBorn AI</div>
+                        Salut! Sunt asistentul AI al FilmReBorn. Te pot ajuta cu:
+                        <br><br>
+                        <strong>Editare video</strong> - sfaturi și tehnici profesionale<br>
+                        <strong>Conversie formate</strong> - MP4, MOV, AVI, MKV, WebM<br>
+                        <strong>Color grading</strong> - corecție culoare, LUT-uri<br>
+                        <strong>Social media</strong> - setări pentru YouTube, Instagram, TikTok<br>
+                        <strong>FFmpeg</strong> - comenzi și scripturi<br>
+                        <strong>AI & Automatizări</strong> - soluții inteligente<br>
+                        <br>
+                        Întreabă-mă orice!
+                    </div>
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <i class="fas fa-circle-notch fa-spin"></i> FilmReBorn AI scrie...
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" 
+                           id="userInput" 
+                           placeholder="Scrie întrebarea ta aici..." 
+                           onkeypress="if(event.key==='Enter')sendMessage()">
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> Trimite
+                    </button>
+                </div>
+
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 16px;">
+                    <i class="fas fa-lightbulb"></i> Exemplu: "Cum convertesc MKV în MP4?" sau "Ce setări pentru YouTube?"
                 </p>
-                <div class="social-links">
-                    <a href="https://github.com/FilmReBorn" title="GitHub">
+            </div>
+        </div>
+    </section>
+
+    <section id="chat-live" style="background: var(--bg-card);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge">
+                    <i class="fas fa-comments"></i>
+                    Comunitate
+                </div>
+                <h2 class="section-title">Chat Live</h2>
+                <p class="section-subtitle">Discută cu alți pasionați de video - fără cont, fără înregistrare</p>
+            </div>
+
+            <div class="live-chat-wrapper fade-in">
+                <iframe src="https://www5.cbox.ws/box/?boxid=961218&boxtag=hNmDF4" 
+                        width="100%" 
+                        height="450" 
+                        allowtransparency="yes" 
+                        allow="autoplay" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        scrolling="auto">
+                </iframe>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 16px;">
+                    <i class="fas fa-unlock"></i> Scrie liber. Fără cont, fără abonament.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="music">
+        <div class="container">
+            <div class="music-wrapper fade-in">
+                <h3><i class="fas fa-headphones"></i> Lo-Fi Radio - Pentru creativitate</h3>
+                <iframe width="100%" height="166" 
+                        src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&mute=1" 
+                        title="Lo-Fi Radio" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                        style="border-radius: 12px;">
+                </iframe>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 16px;">
+                    <i class="fas fa-play"></i> Apasă play pentru muzică ambientală
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </div>
+                <h2 class="section-title">Hai să vorbim</h2>
+                <p class="section-subtitle">Contactează-mă direct pentru orice proiect sau întrebare</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Contact Direct</h3>
+                    <p>Sunt disponibil pentru proiecte de post-producție video, consultanță, automatizări și soluții personalizate. Răspund în maxim 24 de ore.</p>
+
+                    <div class="contact-links">
+                        <a href="tel:+40769497534" class="contact-link">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+40 769 497 534</span>
+                        </a>
+                        <a href="mailto:cptext7@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>cptext7@gmail.com</span>
+                        </a>
+                        <a href="https://FilmReBorn.github.io" target="_blank" class="contact-link">
+                            <i class="fas fa-globe"></i>
+                            <span>FilmReBorn.github.io</span>
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/FilmReBorn" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://youtube.com/@luceafaruluipetter" target="_blank" class="social-link" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="mailto:cptext7@gmail.com" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper fade-in">
+                    <h3><i class="fas fa-paper-plane"></i> Trimite mesaj</h3>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="a69609de-9242-4cab-bf7e-05fe291abc5b">
+                        <input type="hidden" name="from_name" value="FilmReBorn Website">
+                        <input type="hidden" name="subject" value="Mesaj nou de la FilmReBorn">
+
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Numele tău (opțional)" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email-ul tău" required class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Descrie ce ai nevoie..." required class="form-input"></textarea>
+                        </div>
+
+                        <input type="checkbox" name="botcheck" style="display:none;">
+
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i> Trimite mesajul
+                        </button>
+
+                        <p class="form-note">
+                            <i class="fas fa-check-circle" style="color: var(--primary);"></i> 
+                            Mesajul ajunge direct în inbox-ul meu. Răspund în max 24h.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-film"></i> FilmReBorn
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#home">Acasă</a>
+                    <a href="#services">Servicii</a>
+                    <a href="#projects">Proiecte</a>
+                    <a href="#ai-assistant">AI Assistant</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://github.com/FilmReBorn" target="_blank" class="social-link">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://youtube.com/@luceafaruluipetter" title="YouTube">
+                    <a href="https://youtube.com/@luceafaruluipetter" target="_blank" class="social-link">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a href="mailto:cptext7@gmail.com" title="Email">
+                    <a href="mailto:cptext7@gmail.com" class="social-link">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
-                
-                <p style="margin-top: 2rem; color: #00adb5;">
-                    <i class="fas fa-link"></i> Portofoliu live: 
-                    <strong>FilmReBorn.github.io</strong>
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>© 2024 <span style="color: #00adb5;">FilmReBorn</span> - Portofoliu Post-Producție Film</p>
-            <p>Convertire | Editare | Video Automation</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+                <p class="footer-copy">
+                    © 2026 FilmReBorn - Post-Producție Video & AI Solutions<br>
+                    <span style="font-size: 0.85rem;">Conversie | Editare | Automatizări | AI Assistant</span>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Animatie simpla pentru scroll
+        const aiKnowledge = {
+            greetings: {
+                patterns: ['salut', 'buna', 'hey', 'hello', 'hi', 'hei', 'ceau', 'servus', 'noroc', 'ce faci'],
+                responses: [
+                    "Salut! Sunt AI-ul FilmReBorn. Cu ce te pot ajuta azi?",
+                    "Bună! Sunt aici să te ajut cu orice legat de video, editare sau AI. Întreabă liber!",
+                    "Hey! Bine ai venit la FilmReBorn. Spune-mi ce ai nevoie!"
+                ]
+            },
+
+            conversie: {
+                patterns: ['convert', 'conversie', 'format', 'mp4', 'avi', 'mov', 'mkv', 'webm', 'transform', 'schimb format'],
+                responses: [
+                    "<strong>Conversie Video</strong><br><br>Te pot ajuta cu conversia! Iată ce trebuie să știi:<br><br><strong>Cele mai populare formate:</strong><br>• MP4 (H.264) - universal, merge peste tot<br>• MOV - pentru Apple/Final Cut<br>• AVI - vechi dar compatibil<br>• MKV - calitate maximă<br>• WebM - pentru web<br><br><strong>Recomandare:</strong> MP4 cu codec H.264 e cel mai sigur.<br><br>Vrei ajutor cu o conversie? Contactează-mă direct!",
+                ]
+            },
+
+            color: {
+                patterns: ['color', 'culoare', 'grading', 'lut', 'corecti', 'lumina', 'contrast', 'saturati'],
+                responses: [
+                    "<strong>Color Grading</strong><br><br>Color grading-ul transformă complet un video!<br><br><strong>Pași importanți:</strong><br>1. Corecție primară - echilibrare alb, expunere<br>2. Corecție secundară - ajustare zone specifice<br>3. Look/Stil - aplicare LUT-uri, stil cinematic<br><br><strong>Tool-uri recomandate:</strong><br>• DaVinci Resolve (GRATUIT!) - cel mai bun<br>• Adobe Premiere - Lumetri Color<br>• Final Cut Pro - Color Board<br><br>Pentru servicii profesionale, contactează-mă!",
+                ]
+            },
+
+            youtube: {
+                patterns: ['youtube', 'yt', 'upload', 'incarc', 'rezolutie', '1080', '4k', 'thumbnail'],
+                responses: [
+                    "<strong>Setări optime YouTube</strong><br><br><strong>Rezoluție recomandată:</strong><br>• 1080p (1920x1080) - standard<br>• 4K (3840x2160) - calitate maximă<br><br><strong>Setări export:</strong><br>• Format: MP4<br>• Codec: H.264<br>• Frame rate: 24, 30 sau 60 fps<br>• Bitrate: 8-12 Mbps (1080p) / 35-45 Mbps (4K)<br>• Audio: AAC, 320kbps<br><br><strong>Thumbnail:</strong><br>• 1280x720 px, JPG sau PNG, sub 2MB"
+                ]
+            },
+
+            social: {
+                patterns: ['instagram', 'tiktok', 'facebook', 'social', 'reels', 'story', 'stories'],
+                responses: [
+                    "<strong>Formate Social Media</strong><br><br><strong>Instagram:</strong><br>• Post: 1080x1080 (pătrat) sau 1080x1350<br>• Reels/Story: 1080x1920 (vertical, 9:16)<br>• Max 60 secunde reels<br><br><strong>TikTok:</strong><br>• 1080x1920 (vertical, 9:16)<br>• Max 10 minute, H.264, sub 287MB<br><br><strong>Facebook:</strong><br>• 1280x720 minim, MP4 recomandat"
+                ]
+            },
+
+            ffmpeg: {
+                patterns: ['ffmpeg', 'comanda', 'terminal', 'script', 'batch', 'linie comanda', 'cmd'],
+                responses: [
+                    "<strong>FFmpeg - Comenzi Utile</strong><br><br><strong>Conversie simplă:</strong><br><code>ffmpeg -i input.avi output.mp4</code><br><br><strong>Schimbare rezoluție:</strong><br><code>ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</code><br><br><strong>Extragere audio:</strong><br><code>ffmpeg -i video.mp4 -vn audio.mp3</code><br><br><strong>Compresie:</strong><br><code>ffmpeg -i input.mp4 -crf 23 output.mp4</code><br><br>Vrei o comandă specifică? Întreabă-mă!"
+                ]
+            },
+
+            editare: {
+                patterns: ['editare', 'edit', 'montaj', 'taie', 'lipesc', 'tranziti', 'efect', 'premiere', 'davinci', 'final cut'],
+                responses: [
+                    "<strong>Editare Video</strong><br><br><strong>Software GRATUIT:</strong><br>• DaVinci Resolve - profesional, complet<br>• Kdenlive - simplu, Linux/Windows<br>• CapCut - mobil, foarte ușor<br><br><strong>Software PLĂTIT:</strong><br>• Adobe Premiere Pro - standard industrie<br>• Final Cut Pro - Mac, foarte rapid<br>• Vegas Pro - Windows, accesibil<br><br><strong>Sfat:</strong> DaVinci Resolve e GRATUIT și profesional - perfect pentru început!"
+                ]
+            },
+
+            ai: {
+                patterns: ['ai', 'inteligenta artificiala', 'artificial', 'machine learning', 'neural', 'automat'],
+                responses: [
+                    "<strong>AI în Video Production</strong><br><br>AI revoluționează editarea video!<br><br><strong>Ce poate face AI:</strong><br>• Upscaling video (mărire rezoluție)<br>• Eliminare zgomot audio/video<br>• Tracking obiecte automat<br>• Editare automată (auto-cut)<br>• Subtitrare automată<br>• Generare muzică/imagini<br><br><strong>Tool-uri AI gratuite:</strong><br>• CapCut - editare AI mobilă<br>• Runway ML - efecte AI online<br>• Whisper - subtitrare AI"
+                ]
+            },
+
+            audio: {
+                patterns: ['audio', 'sunet', 'muzica', 'microfon', 'zgomot', 'volum', 'mp3', 'wav'],
+                responses: [
+                    "<strong>Audio & Sunet</strong><br><br><strong>Formate audio:</strong><br>• MP3 - comprimat, universal<br>• WAV - neccomprimat, calitate maximă<br>• AAC - bun pentru video<br>• FLAC - comprimat fără pierderi<br><br><strong>Sfaturi:</strong><br>• Elimină zgomotul cu Audacity (gratuit)<br>• Normalizează volumul la -1dB<br>• Voice-over: 44.1kHz, 16bit minim<br><br>Pentru probleme audio, contactează-mă!"
+                ]
+            },
+
+            contact: {
+                patterns: ['contact', 'email', 'telefon', 'whatsapp', 'cum va gasesc', 'cum te contactez', 'pret', 'cost', 'cat costa'],
+                responses: [
+                    "<strong>Contact FilmReBorn</strong><br><br>Email: <strong>cptext7@gmail.com</strong><br>Telefon: <strong>+40 769 497 534</strong><br>GitHub: <strong>github.com/FilmReBorn</strong><br>YouTube: <strong>@luceafaruluipetter</strong><br><br>Scrie-mi direct și discutăm despre ce ai nevoie! Răspund în max 24h."
+                ]
+            },
+
+            reparare: {
+                patterns: ['repara', 'stricat', 'corupt', 'nu merge', 'deteriorat', 'artefact', 'glitch', 'problema'],
+                responses: [
+                    "<strong>Reparare Video</strong><br><br>Dacă ai un video stricat, pot ajuta!<br><br><strong>Probleme comune:</strong><br>• Video nu se deschide<br>• Artefacte vizuale (glitch-uri)<br>• Audio desincronizat<br>• Fișier corupt<br><br><strong>Ce pot face:</strong><br>• Recuperare fișiere corupte<br>• Reparare header-e video<br>• Sincronizare audio-video<br>• Eliminare artefacte cu AI<br><br>Trimite-mi un email cu detalii!"
+                ]
+            },
+
+            multumiri: {
+                patterns: ['mersi', 'multumesc', 'merci', 'thanks', 'thank', 'apreciez', 'super', 'genial', 'perfect'],
+                responses: [
+                    "Cu plăcere! Mă bucur că te-am putut ajuta! Dacă mai ai întrebări, sunt aici oricând!",
+                    "Mulțumesc și eu! Nu ezita să revii când ai nevoie. Succes!",
+                    "Cu drag! Suntem aici pentru tine. FilmReBorn - mereu la dispoziția ta!"
+                ]
+            },
+
+            default: {
+                responses: [
+                    "Nu sunt sigur că am înțeles exact. Pot să te ajut cu:<br><br>• Editare video<br>• Conversie formate<br>• Color grading<br>• Setări YouTube/Social Media<br>• Comenzi FFmpeg<br>• AI în video<br>• Audio<br>• Contact<br><br>Încearcă să reformulezi sau contactează-mă direct la cptext7@gmail.com!",
+                    "Hmm, aș vrea să te ajut mai bine! Poți să întrebi despre:<br><br>• Formate video și conversii<br>• Editare și color grading<br>• Social media (YouTube, Instagram, TikTok)<br>• FFmpeg și automatizări<br>• AI în producție video<br><br>Sau contactează direct: +40 769 497 534"
+                ]
+            }
+        };
+
+        function findBestResponse(userMsg) {
+            const msg = userMsg.toLowerCase()
+                .replace(/[ăâ]/g, 'a')
+                .replace(/[îï]/g, 'i')
+                .replace(/[șş]/g, 's')
+                .replace(/[țţ]/g, 't');
+            
+            let bestMatch = null;
+            let bestScore = 0;
+
+            for (const [category, data] of Object.entries(aiKnowledge)) {
+                if (category === 'default') continue;
+                
+                let score = 0;
+                for (const pattern of data.patterns) {
+                    const normalizedPattern = pattern.toLowerCase()
+                        .replace(/[ăâ]/g, 'a')
+                        .replace(/[îï]/g, 'i')
+                        .replace(/[șş]/g, 's')
+                        .replace(/[țţ]/g, 't');
+                    
+                    if (msg.includes(normalizedPattern)) {
+                        score += normalizedPattern.length;
+                    }
+                }
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMatch = data;
+                }
+            }
+
+            if (bestMatch && bestScore > 0) {
+                const responses = bestMatch.responses;
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+
+            const defaultResponses = aiKnowledge.default.responses;
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const typingIndicator = document.getElementById('typingIndicator');
+            const sendBtn = document.getElementById('sendBtn');
+            const userText = input.value.trim();
+
+            if (!userText) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = '<div class="sender"><i class="fas fa-user"></i> Tu</div>' + userText;
+            chatMessages.appendChild(userMsg);
+
+            input.value = '';
+            sendBtn.disabled = true;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            typingIndicator.classList.add('show');
+
+            const thinkTime = 800 + Math.random() * 1200;
+            
+            setTimeout(() => {
+                typingIndicator.classList.remove('show');
+                const botResponse = findBestResponse(userText);
+
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot';
+                botMsg.innerHTML = '<div class="sender"><i class="fas fa-robot"></i> FilmReBorn AI</div>' + botResponse;
+                chatMessages.appendChild(botMsg);
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                sendBtn.disabled = false;
+                input.focus();
+            }, thinkTime);
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if (targetId === '#') return;
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 20,
                         behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
-    <!-- 🔥 De aici jos chat si lasa mesaj -->
-        <div class="service">
-            <h3>🎨 Optimizare pentru social media</h3>
-            <p>Formatare specifică pentru YouTube, Instagram, TikTok</p>
-            <p>Compresie inteligentă fără pierdere calitate</p>
-            
-        <div class="service">
-            <h3>🎓 Tutoriale personalizate</h3>
-            <p> Folosim tehnologie la zi </p>
-            <h1> Programe</h1>
-            <p>Folosim un  motor multimedia universal". </p>
-            <p>Orice operaţie legată de video, audio, imagini, </p>
-            <p>streaming, captură, conversie, editare, </p>
-             <p>compresie-intră în aria programelor care folosim..</p>
-            
-            <h3> Asteptam propunerile in. chat</h3>
-            
-<!-- 🔥 CHAT LIVE CBOX -->
-<h3 style="color: #00adb5; margin-top: 30px;">💬 Chat Live</h3>
-<!-- .. (restul codului cu chat)-->
-<div style="background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #00adb5; margin-bottom: 30px;">
-    <iframe src="https://www5.cbox.ws/box/?boxid=961218&boxtag=hNmDF4" 
-            width="100%" 
-            height="450" 
-            allowtransparency="yes" 
-            allow="autoplay" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0" 
-            scrolling="auto">
-    </iframe>
-    <p style="color: #888; font-size: 12px; text-align: center; margin-top: 10px;">
-        💬 Scrie liber. Fără cont, fără abonament.
-    </p>
-</div>                   
-    <!-- MUZICĂ AMBIENT LIVE 24/7 - LO-FI RADIO -->
-<div style="margin: 40px auto; max-width: 560px; text-align: center;">
-    <h3 style="color: #00adb5; margin-bottom: 15px;">🎵 Lo-Fi Radio - Live 24/7</h3>
-    <iframe width="100%" height="166" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&mute=1" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-    </iframe>
-    <p style="color: #888; font-size: 12px; margin-top: 10px;">🎧 Apasă play. Fără login, fără abonament.</p>
-</div>
-</div> <!-- se închide div-ul cu muzică -->
 
-<!-- ⚡⚡⚡ CONTACT DIRECT ADMIN - MESAJE ÎN GMAIL ⚡⚡⚡ -->
-<div style="background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 100%); 
-            padding: 30px; 
-            border-radius: 20px; 
-            border: 1px solid #00adb5;
-            box-shadow: 0 10px 30px rgba(0, 173, 181, 0.2);
-            margin: 40px auto;
-            max-width: 700px;">
-    
-    <div style="text-align: center; margin-bottom: 30px;">
-        <h2 style="color: #00adb5; 
-                   font-size: 32px; 
-                   margin: 0;
-                   text-shadow: 0 0 10px rgba(0, 173, 181, 0.5);
-                   letter-spacing: 2px;">
-            ⚡ CONTACT DIRECT ADMIN ⚡
-        </h2>
-        <div style="width: 100px; 
-                    height: 3px; 
-                    background: #00adb5; 
-                    margin: 15px auto;
-                    box-shadow: 0 0 10px #00adb5;">
-        </div>
-        <p style="color: #888; 
-                  font-size: 14px; 
-                  margin: 0;
-                  text-transform: uppercase;
-                  letter-spacing: 3px;">
-            Mesajul ajunge instant în inbox-ul meu
-        </p>
-    </div>
-
-    <form action="https://api.web3forms.com/submit" 
-          method="POST" 
-          style="display: flex; 
-                 flex-direction: column; 
-                 gap: 20px;">
-        
-        <input type="hidden" 
-               name="access_key" 
-               value="a69609de-9242-4cab-bf7e-05fe291abc5b">
-        
-        <input type="hidden" 
-               name="from_name" 
-               value="FilmReBorn Website - Contact Admin">
-
-        <input type="hidden" 
-               name="subject" 
-               value="🔴 MESAJ NOU DE LA UN VIZITATOR 🔴">
-
-        <div style="position: relative;">
-            <span style="position: absolute; 
-                         top: -10px; 
-                         left: 15px; 
-                         background: #1a1a1a; 
-                         padding: 0 10px; 
-                         color: #00adb5; 
-                         font-size: 14px;">
-                👤 Numele tău (opțional)
-            </span>
-            <input type="text" 
-                   name="name" 
-                   placeholder="ex: Ion Popescu"
-                   style="width: 100%;
-                          padding: 18px 20px;
-                          background: #0a0a0a;
-                          border: 2px solid #333;
-                          border-radius: 15px;
-                          color: white;
-                          font-size: 16px;
-                          transition: 0.3s;
-                          outline: none;
-                          box-sizing: border-box;">
-        </div>
-
-        <div style="position: relative;">
-            <span style="position: absolute; 
-                         top: -10px; 
-                         left: 15px; 
-                         background: #1a1a1a; 
-                         padding: 0 10px; 
-                         color: #00adb5; 
-                         font-size: 14px;">
-                📧 Email (ca să pot răspunde)
-            </span>
-            <input type="email" 
-                   name="email" 
-                   placeholder="ex: nume@gmail.com"
-                   required
-                   style="width: 100%;
-                          padding: 18px 20px;
-                          background: #0a0a0a;
-                          border: 2px solid #333;
-                          border-radius: 15px;
-                          color: white;
-                          font-size: 16px;
-                          transition: 0.3s;
-                          outline: none;
-                          box-sizing: border-box;">
-        </div>
-
-        <div style="position: relative;">
-            <span style="position: absolute; 
-                         top: -10px; 
-                         left: 15px; 
-                         background: #1a1a1a; 
-                         padding: 0 10px; 
-                         color: #00adb5; 
-                         font-size: 14px;">
-                💬 Mesajul tău
-            </span>
-            <textarea name="message" 
-                      placeholder="Scrie aici ce ai nevoie: proiect, întrebare, colaborare..."
-                      rows="5"
-                      required
-                      style="width: 100%;
-                             padding: 18px 20px;
-                             background: #0a0a0a;
-                             border: 2px solid #333;
-                             border-radius: 15px;
-                             color: white;
-                             font-size: 16px;
-                             transition: 0.3s;
-                             outline: none;
-                             box-sizing: border-box;
-                             resize: vertical;
-                             font-family: Arial, sans-serif;"></textarea>
-        </div>
-
-        <input type="checkbox" 
-               name="botcheck" 
-               style="display: none;">
-
-        <button type="submit" 
-                style="background: linear-gradient(45deg, #00adb5, #007c8a);
-                       color: white;
-                       padding: 18px 30px;
-                       border: none;
-                       border-radius: 50px;
-                       font-size: 20px;
-                       font-weight: bold;
-                       cursor: pointer;
-                       transition: 0.3s;
-                       text-transform: uppercase;
-                       letter-spacing: 3px;
-                       display: flex;
-                       align-items: center;
-                       justify-content: center;
-                       gap: 15px;
-                       margin-top: 10px;
-                       box-shadow: 0 5px 20px rgba(0, 173, 181, 0.4);">
-            <span style="font-size: 24px;">📨</span>
-            TRIMITE MESAJ DIRECT ADMIN
-            <span style="font-size: 24px;">⚡</span>
-        </button>
-
-        <p style="color: #666; 
-                  font-size: 13px; 
-                  text-align: center; 
-                  margin-top: 15px;
-                  padding: 10px;
-                  border-top: 1px solid #333;">
-            ✅ Mesajul ajunge INSTANT în Gmail-ul meu (cptext7@gmail.com). 
-            Răspund în max 24h, de obicei mai repede.
-        </p>
-    </form>
-</div>
-<!-- ⚡⚡⚡ SFÂRȘIT CONTACT DIRECT ADMIN ⚡⚡⚡ -->
-
-<p style="margin-top: 40px; text-align: center; color: #888;">
-    © 2024 FilmReBorn - Transformăm orice filmare în capodoperă
-</p>
-
-            
-        <p style="margin-top: 40px; text-align: center; color: #888;">
-            © 2024 FilmReBorn - Transformăm orice filmare în capodoperă
-        </p>
-    </div>
 </body>
 </html>
